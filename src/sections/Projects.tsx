@@ -8,6 +8,8 @@ import kinoVibes from "../../public/images/projects/kinoVibes.png";
 import aircursor from "../../public/images/projects/kinoVibes.png";
 import handWaveUnlock from "../../public/images/projects/handwave_unlock.png";
 import cableBillingSystem from "../../public/images/projects/cableBillingSystem.png";
+import qubitChat from "../../public/images/projects/qubitchat.png";
+import apadhbandhav from "../../public/images/projects/apadhbandhav.png";
 
 import ArrowRightIcon from "../../public/icons/arrow-up-right.svg";
 
@@ -19,6 +21,32 @@ import { Card } from "@/components/Card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 const projects = [
+  {
+    name: "QubitChat",
+    description:
+      "An AI-powered document intelligence system for PDFs and images that generates embeddings with Gemini API and ChromaDB. It combines classical similarity search with a Qiskit-simulated Grover's Algorithm retrieval pipeline, with an automatic fallback for datasets up to 210 vectors.",
+    image: qubitChat,
+    link: "https://github.com/balu-16/IDP_Project.git",
+    repo: "https://github.com/balu-16/IDP_Project.git",
+    tech: ["React", "TypeScript", "FastAPI", "Gemini API", "ChromaDB", "Qiskit"],
+    isTopProject: true,
+    isAIML: true,
+    isMern: false,
+    isJava: false,
+  },
+  {
+    name: "Apadhbandhav",
+    description:
+      "An AIoT-based accident detection and emergency response system supporting normal users, police, hospitals, admins, and super admins. It automates crash alerts through SMS and voice calls, expanding the responder search radius from 5 km to 40 km until help is found.",
+    image: apadhbandhav,
+    link: "http://apadhbandhav.com/",
+    repo: "https://github.com/balu-16/apadhbandhav_complete.git",
+    tech: ["React", "TypeScript", "NestJS", "MongoDB", "Redis", "AIoT"],
+    isTopProject: true,
+    isAIML: false,
+    isMern: true,
+    isJava: false,
+  },
   {
     name: "Intruder Vision",
     description:
@@ -297,13 +325,13 @@ const ProjectList = ({ chosenStack }: { chosenStack: string }) => {
                     </Link>
                   </div>
                 </div>
-                <div>
-                  <Image
-                    src={project.image}
-                    alt={project.name}
-                    className="mt-8 -mb-4 md:-mb-0 lg:mt-0 lg:absolute  lg:h-full lg:w-auto lg:max-w-none rounded-t-lg md:rounded-tl-lg"
-                  />
-                </div>
+              <div>
+                <Image
+                  src={project.image}
+                  alt={project.name}
+                  className="mt-8 -mb-4 md:-mb-0 lg:mt-0 lg:absolute lg:h-full lg:w-auto lg:max-w-none rounded-t-lg md:rounded-tl-lg"
+                />
+              </div>
               </div>
             </Card>
           ))
