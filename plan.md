@@ -19,11 +19,11 @@ Improve narrow-screen layout, keyboard accessibility, reduced-motion behavior, a
 - Consolidate spacing and typography incrementally, including a readable hero paragraph max width and removal of unused font loads.
 - Give About images meaningful alt text and hide decorative orbit/visual layers from assistive technology.
 
-### Cleanup and content (V6, P1–P2)
+### Cleanup, content, and maintenance (V6, P1–P3)
 - Remove obsolete ID hover CSS, invalid/redundant utilities, commented-out code, unused imports, and confirmed-unused template UI components.
 - Add a direct `mailto:` Contact CTA.
 - Add the NighaTech Global internship from the resume and correct project technology/category labels and filtering.
-- Defer dependency maintenance (Next, Tailwind, Framer Motion, and icon packages) to a separate safe patch-only pass; no dependency upgrades are part of this UI change.
+- Complete the safe maintenance pass: remove unused dependencies and update Next 14, Tailwind 3, Framer Motion 11, Tabler Icons 3, and compatible tooling/types without major-version migrations.
 
 ## Validation
 - Run project diagnostics, TypeScript/production build, lint, and `git diff --check`.
