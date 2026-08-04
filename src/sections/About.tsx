@@ -1,4 +1,4 @@
-import aiStartupLandingPage from "../../public/images/ai-startup-landing-page.png";
+
 import AboutImage from "../../public/images/aboutme.png";
 import AboutImageMobile from "../../public/images/aboutme_2.png";
 import Image from "next/image";
@@ -6,10 +6,13 @@ import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 
 export const AboutSection = () => {
   return (
-    <div className=" flex items-start justify-center -mt-32" id="about">
+    <div
+      id="about"
+      className="scroll-mt-24 -mt-8 flex items-start justify-center sm:-mt-12 md:-mt-16"
+    >
       <ContainerScroll
         titleComponent={
-          <div className="flex flex-col items-center justify-center md:gap-3 -mb-28 md:-mb-0">
+          <div className="-mb-12 flex flex-col items-center justify-center sm:-mb-16 md:mb-0 md:gap-3">
             <h1 className="font-cursive text-3xl md:text-5xl text-center mt-6">
               About Me
             </h1>
@@ -21,7 +24,7 @@ export const AboutSection = () => {
       >
         <Image
           src={AboutImage}
-          alt="hero"
+          alt="Screenshot of Balarakesh's desktop About section"
           height={720}
           width={1400}
           className="mx-auto rounded-2xl object-cover h-full object-left-top hidden md:block"
@@ -29,7 +32,7 @@ export const AboutSection = () => {
         />
         <Image
           src={AboutImageMobile}
-          alt="hero"
+          alt="Screenshot of Balarakesh's mobile About section"
           height={720}
           width={1600}
           className="mx-auto rounded-2xl object-cover h-full object-left md:hidden "

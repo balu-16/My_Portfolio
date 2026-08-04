@@ -26,8 +26,6 @@ const config = {
       fontFamily: {
         inter: ["var(--font-inter)"],
         cursive: ["var(--font-cursive)"],
-        dancing_script: ["var(--font-dancing_script)"],
-        fredoka: ["var(--font-fredoka)"],
       },
       colors: {
         border: "hsl(var(--border))",

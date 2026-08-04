@@ -10,130 +10,109 @@ import handWaveUnlock from "../../public/images/projects/handwave_unlock.png";
 import cableBillingSystem from "../../public/images/projects/cableBillingSystem.png";
 import qubitChat from "../../public/images/projects/qubitchat.png";
 import apadhbandhav from "../../public/images/projects/apadhbandhav.png";
-
 import ArrowRightIcon from "../../public/icons/arrow-up-right.svg";
 
 import { Tabs } from "@/components/ui/tabs";
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import { IconBrandGithub } from "@tabler/icons-react";
 import { Card } from "@/components/Card";
-import { ScrollArea } from "@/components/ui/scroll-area";
 
-const projects = [
+type Project = {
+  name: string;
+  description: string;
+  image: StaticImageData;
+  liveLink?: string;
+  repo: string;
+  tech: string[];
+  isTopProject: boolean;
+  isAIML: boolean;
+  isWeb: boolean;
+};
+
+const projects: Project[] = [
   {
     name: "QubitChat",
     description:
       "An AI-powered document intelligence system for PDFs and images that generates embeddings with Gemini API and ChromaDB. It combines classical similarity search with a Qiskit-simulated Grover's Algorithm retrieval pipeline, with an automatic fallback for datasets up to 210 vectors.",
     image: qubitChat,
-    link: "https://github.com/balu-16/IDP_Project.git",
     repo: "https://github.com/balu-16/IDP_Project.git",
     tech: ["React", "TypeScript", "FastAPI", "Gemini API", "ChromaDB", "Qiskit"],
     isTopProject: true,
     isAIML: true,
-    isMern: false,
-    isJava: false,
+    isWeb: false,
   },
   {
     name: "Apadhbandhav",
     description:
-      "An AIoT-based accident detection and emergency response system supporting normal users, police, hospitals, admins, and super admins. It automates crash alerts through SMS and voice calls, expanding the responder search radius from 5 km to 40 km until help is found.",
+      "An IoT-based accident detection and emergency response system supporting normal users, police, hospitals, admins, and super admins. It automates crash alerts through SMS and voice calls, expanding the responder search radius from 5 km to 40 km until help is found.",
     image: apadhbandhav,
-    link: "http://apadhbandhav.com/",
+    liveLink: "http://apadhbandhav.com/",
     repo: "https://github.com/balu-16/apadhbandhav_complete.git",
-    tech: ["React", "TypeScript", "NestJS", "MongoDB", "Redis", "AIoT"],
+    tech: ["React", "TypeScript", "NestJS", "MongoDB", "Redis", "IoT"],
     isTopProject: true,
     isAIML: false,
-    isMern: true,
-    isJava: false,
+    isWeb: true,
   },
   {
     name: "Intruder Vision",
     description:
-      "An AI-powered security system that detects unauthorized access attempts on Windows systems. Features include capturing intruder's photo via webcam, sending email alerts with photos, and SMS notifications via Twilio for real-time security monitoring.",
+      "An AI-powered security system that detects unauthorized access attempts on Windows systems. Features include capturing an intruder's photo via webcam, sending email alerts with photos, and SMS notifications via Twilio for real-time security monitoring.",
     image: intruderVision,
-    link: "https://intruder-vision.onrender.com/",
+    liveLink: "https://intruder-vision.onrender.com/",
     repo: "https://github.com/balu-16/Intruder_Vision.git",
-    tech: ["Python", "OpenCV", "Twilio", "SMTPlib", "WMI"],
+    tech: ["Python", "OpenCV", "Twilio", "smtplib", "WMI"],
     isTopProject: true,
     isAIML: true,
-    isMern: true,
-    isJava: false,
+    isWeb: false,
   },
   {
     name: "MailAlert",
     description:
       "A Python-based email scanning tool that connects to your Gmail inbox and alerts you when an email contains a specific keyword. Features include real-time alerts, IST time conversion, and efficient email monitoring.",
     image: mailAlert,
-    link: "https://mailalert.onrender.com/",
+    liveLink: "https://mailalert.onrender.com/",
     repo: "https://github.com/balu-16/MailAlert.git",
-    tech: [
-      "Python",
-      "Gmail API",
-      "Pytz",
-      "Email Monitoring"
-    ],
+    tech: ["Python", "Gmail API", "Pytz", "Email Monitoring"],
     isTopProject: true,
     isAIML: false,
-    isMern: true,
-    isJava: false,
+    isWeb: false,
   },
   {
     name: "HandWave Unlock",
     description:
-      "A gesture-based system unlock tool built using MediaPipe and OpenCV. It detects specific hand gestures through a webcam feed and unlocks access without the need for physical contact. Includes a simple frontend with HTML, CSS, and JS integrated via Flask.",
+      "A gesture-based system unlock tool built using MediaPipe and OpenCV. It detects specific hand gestures through a webcam feed and unlocks access without the need for physical contact. Includes a simple frontend with HTML, CSS, and JavaScript integrated via Flask.",
     image: handWaveUnlock,
-    link: "https://handwave-unlock.onrender.com",
+    liveLink: "https://handwave-unlock.onrender.com",
     repo: "https://github.com/balu-16/HandWave_Unlock.git",
-    tech: [
-      "Python",
-      "OpenCV",
-      "MediaPipe",
-      "Flask",
-      "HTML/CSS/JS"
-    ],
+    tech: ["Python", "OpenCV", "MediaPipe", "Flask", "HTML/CSS/JS"],
     isTopProject: true,
     isAIML: true,
-    isMern: true,
-    isJava: false,
+    isWeb: false,
   },
   {
     name: "AirCursor",
     description:
-      "An AI-powered virtual mouse system that uses hand gestures to control the cursor in real-time. Built with OpenCV and MediaPipe, it tracks finger movements and maps them to screen coordinates for hands-free navigation.",
+      "An AI-powered virtual mouse system that uses hand gestures to control the cursor in real time. Built with OpenCV and MediaPipe, it tracks finger movements and maps them to screen coordinates for hands-free navigation.",
     image: aircursor,
-    link: "https://github.com/balu-16/AirCursor.git",
     repo: "https://github.com/balu-16/AirCursor.git",
-    tech: [
-      "Python",
-      "OpenCV",
-      "MediaPipe",
-      "Hand Tracking",
-      "Computer Vision"
-    ],
+    tech: ["Python", "OpenCV", "MediaPipe", "Hand Tracking", "Computer Vision"],
     isTopProject: true,
     isAIML: true,
-    isMern: false,
-    isJava: false,
+    isWeb: false,
   },
   {
     name: "KinoVibes Movie Streaming Platform",
     description:
-      "A powerful movie streaming and downloading platform offering a vast collection of films across various genres. Features include seamless streaming, fast downloads, user-friendly interface, and secure authentication system.",
+      "A movie streaming and downloading platform offering a collection of films across various genres. Features include seamless streaming, fast downloads, a user-friendly interface, and secure authentication.",
     image: kinoVibes,
-    link: "https://kino-vibes-movie-streaming-platform-git-main-balu-16s-projects.vercel.app",
+    liveLink:
+      "https://kino-vibes-movie-streaming-platform-git-main-balu-16s-projects.vercel.app",
     repo: "https://github.com/balu-16/KinoVibes-Movie-Streaming-Platform-.git",
-    tech: [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Node.js",
-      "MongoDB"
-    ],
+    tech: ["HTML", "CSS", "JavaScript", "Node.js", "MongoDB"],
     isTopProject: true,
     isAIML: false,
-    isMern: true,
-    isJava: false,
+    isWeb: true,
   },
   {
     name: "Disease Prediction Using Machine Learning",
@@ -141,127 +120,95 @@ const projects = [
       "A machine learning-based disease prediction system that analyzes patient data to provide early diagnosis and actionable health insights.",
     image: disImage,
     repo: "https://github.com/gautham8325/Disease-prediction-from-symptoms",
-    link: "https://github.com/gautham8325/Disease-prediction-from-symptoms",
-    tech: ["Python Libraries", "Machine Learning Algorithms", "tensorflow", "pytorch"],
+    tech: ["Python", "scikit-learn", "TensorFlow", "PyTorch"],
     isTopProject: false,
     isAIML: true,
-    isMern: false,
-    isJava: false,
+    isWeb: false,
   },
   {
     name: "GameVerse",
     description:
       "A fun and interactive gaming platform featuring multiple classic games including Rock Paper Scissors, Guess the Number, and Tic-Tac-Toe. Play against the computer or another player with a simple yet engaging design.",
     image: games,
-    link: "https://game-verse-rose-nine.vercel.app",
+    liveLink: "https://game-verse-rose-nine.vercel.app",
     repo: "https://github.com/balu-16/GameVerse.git",
     tech: ["JavaScript", "HTML", "CSS"],
     isTopProject: false,
     isAIML: false,
-    isMern: true,
-    isJava: false,
+    isWeb: true,
   },
   {
     name: "Cable Billing System",
     description:
-      "A real-time cable billing web application built to assist local cable operators. It verifies set-top box numbers, allows users to pay via a generated QR code, and notifies the operator through email upon successful payment. Includes a 'Contact Us' section for support.",
-    image: cableBillingSystem, // replace with the actual imported image variable
-    link: "https://your-cable-system-demo-link.com/", // replace with actual live demo link if available
+      "A real-time cable billing web application built to assist local cable operators. It verifies set-top box numbers, allows users to pay via a generated QR code, and notifies the operator through email upon successful payment.",
+    image: cableBillingSystem,
     repo: "https://github.com/balu-16/Cable-billing-System.git",
-    tech: [
-      "Python",
-      "Flask",
-      "SQLite",
-      "Email API",
-      "QR Code Generator"
-    ],
+    tech: ["Python", "Flask", "SQLite", "Email API", "QR Code Generator"],
     isTopProject: true,
     isAIML: false,
-    isMern: true,
-    isJava: false
+    isWeb: true,
   },
 ];
+
+const ProjectPanel = ({
+  title,
+  chosenStack,
+}: {
+  title: string;
+  chosenStack: string;
+}) => (
+  <div className="w-full rounded-2xl bg-gradient-to-br from-purple-700 to-violet-900">
+    <p className="mt-6 text-center font-cursive text-2xl">{title}</p>
+    <ProjectList chosenStack={chosenStack} />
+  </div>
+);
 
 export function ProjectsSection() {
   const tabs = [
     {
       title: "Top Projects",
       value: "top-projects",
-      content: (
-        <ScrollArea className="w-full overflow-y-auto relative h-full rounded-2xl  bg-gradient-to-br from-purple-700 to-violet-900">
-          <p className="text-center text-2xl font-cursive  mt-6">
-            Top Projects
-          </p>
-          <ProjectList chosenStack="top-projects" />
-        </ScrollArea>
-      ),
+      content: <ProjectPanel title="Top Projects" chosenStack="top-projects" />,
     },
     {
       title: "AIML Projects",
       value: "aiml",
-      content: (
-        <ScrollArea className="w-full overflow-hidden relative h-full rounded-2xl  bg-gradient-to-br from-purple-700 to-violet-900">
-          <p className="text-center text-2xl font-cursive  mt-6">AIML</p>
-          <ProjectList chosenStack="aiml" />
-        </ScrollArea>
-      ),
+      content: <ProjectPanel title="AIML" chosenStack="aiml" />,
     },
     {
-      title: "MERN Stack & HTML/CSS",
-      value: "mern",
-      content: (
-        <ScrollArea className="w-full overflow-hidden relative h-full rounded-2xl  bg-gradient-to-br from-purple-700 to-violet-900">
-          <p className="text-center text-2xl font-cursive  mt-6">MERN Stack</p>
-          <ProjectList chosenStack="mern" />
-        </ScrollArea>
-      ),
-    },
-    {
-      title: "Java Projects",
-      value: "java",
-      content: (
-        <ScrollArea className="w-full overflow-hidden relative h-full rounded-2xl  bg-gradient-to-br from-purple-700 to-violet-900">
-          <p className="text-center text-2xl font-cursive  mt-6">Java</p>
-          <ProjectList chosenStack="java" />
-        </ScrollArea>
-      ),
+      title: "Web Stack",
+      value: "web",
+      content: <ProjectPanel title="Web Stack" chosenStack="web" />,
     },
     {
       title: "All Projects",
       value: "all-projects",
-      content: (
-        <ScrollArea className="w-full overflow-hidden relative h-full rounded-2xl  bg-gradient-to-br from-purple-700 to-violet-900">
-          <p className="text-center text-2xl font-cursive  mt-6">
-            All Projects
-          </p>
-          <ProjectList chosenStack="all-projects" />
-        </ScrollArea>
-      ),
+      content: <ProjectPanel title="All Projects" chosenStack="all-projects" />,
     },
   ];
 
   return (
-    <div className=" h-full my-40">
-      <div className="container mb-12">
+    <section className="h-auto py-20 md:py-28">
+      <div className="container mb-10 md:mb-12">
         <div className="flex justify-center">
-          <p className="uppercase font-semibold tracking-widest bg-gradient-to-r from-emerald-300 to-sky-400 text-transparent bg-clip-text text-center">
+          <p className="text-center font-semibold uppercase tracking-widest bg-gradient-to-r from-emerald-300 to-sky-400 text-transparent bg-clip-text">
             Real-world Results
           </p>
         </div>
-        <h1 className="font-cursive text-3xl md:text-5xl text-center mt-6">
+        <h1 className="mt-6 text-center font-cursive text-3xl md:text-5xl">
           Featured Projects
         </h1>
-        <p className="text-center text-white/60 mt-4 md:text-lg max-w-md mx-auto">
+        <p className="mx-auto mt-4 max-w-md text-center text-white/60 md:text-lg">
           See how I transformed concepts into engaging digital experiences.
         </p>
       </div>
       <div
-        className="h-screen md:h-[60rem] [perspective:1000px] relative flex flex-col  mx-auto  items-center justify-center w-screen md:w-3/4 "
         id="projects"
+        className="relative mx-auto flex h-auto min-h-[42rem] w-full flex-col items-center justify-start px-3 [perspective:1000px] scroll-mt-24 sm:min-h-[48rem] sm:px-6 md:min-h-[60rem] md:w-3/4 md:px-0"
       >
         <Tabs tabs={tabs} />
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -269,69 +216,69 @@ const ProjectList = ({ chosenStack }: { chosenStack: string }) => {
   const filteredProjects = projects.filter((project) => {
     if (chosenStack === "aiml") return project.isAIML;
     if (chosenStack === "top-projects") return project.isTopProject;
-    if (chosenStack === "mern") return project.isMern;
-    if (chosenStack === "java") return project.isJava;
+    if (chosenStack === "web") return project.isWeb;
     return true;
   });
 
   return (
     <div>
-      <div className="flex flex-col gap-20 mt-0 md:mt-10">
+      <div className="mt-0 flex flex-col gap-20 md:mt-10">
         {filteredProjects.length > 0 ? (
           filteredProjects.map((project, index) => (
-
             <Card
-              key={index}
-              className=" px-8 pt-8 pb-0 md:pt-12 md:px-10 lg:pt-16 lg:px-20  last-of-type:mb-36 md:sticky"
-              style={{
-                top: `calc(64px + ${index * 40}px)`,
-              }}
+              key={project.name}
+              className="last-of-type:mb-24 px-4 pt-6 pb-0 sm:px-6 sm:pt-8 md:sticky md:last-of-type:mb-36 md:px-10 md:pt-12 lg:px-20 lg:pt-16"
+              style={{ top: `calc(64px + ${index * 40}px)` }}
             >
               <div className="lg:grid lg:grid-cols-2 lg:gap-16">
                 <div>
-                  <h3 className="font-serif text-2xl mt-2 md:text-4xl">
+                  <h3 className="mt-2 font-serif text-2xl md:text-4xl">
                     {project.name}
                   </h3>
-                  <hr className="border-white/5 border-t-2 mt-4" />
-                  <p className="text-white/60 mt-4 text-sm md:text-base ">
+                  <hr className="mt-4 border-t-2 border-white/5" />
+                  <p className="mt-4 text-sm text-white/60 md:text-base">
                     {project.description}
                   </p>
-                  <ul className="text-white/50 mt-4 flex flex-wrap gap-4 flex-row">
-                    {project.tech.map((tech, index) => (
+                  <ul className="mt-4 flex flex-row flex-wrap gap-2 text-white/50 sm:gap-4">
+                    {project.tech.map((tech) => (
                       <li
-                        key={index}
-                        className="bg-white/10 p-2 rounded-lg text-white/50 text-small md:text-base"
+                        key={tech}
+                        className="rounded-lg bg-white/10 p-2 text-xs text-white/70 md:text-base"
                       >
                         {tech}
                       </li>
                     ))}
                   </ul>
-                  <div className="flex flex-row gap-4 items-center justify-start my-8">
-                    <Link
-                      href={project.link}
-                      className="w-2/3 md:w-2/5"
-                      target="_blank"
-                    >
-                      <button className="bg-white text-gray-950 h-12 w-full rounded-xl font-semibold inline-flex items-center justify-center gap-2 cursor-pointer hover:bg-white/80   transition-all duration-300">
+                  <div className="my-8 flex flex-row items-center justify-start gap-4">
+                    {project.liveLink && (
+                      <Link
+                        href={project.liveLink}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="focus-ring inline-flex h-12 w-2/3 cursor-pointer items-center justify-center gap-2 rounded-xl bg-white font-semibold text-gray-950 transition-all duration-300 hover:bg-white/80 md:w-2/5"
+                      >
                         <span>View Live Site</span>
-                        <ArrowRightIcon className="size-4 " />
-                      </button>
-                    </Link>
-
-                    <Link href={project.repo} target="_blank">
-                      <button className="bg-black p-2 rounded-full cursor-pointer">
-                        <IconBrandGithub className="size-8" />
-                      </button>
+                        <ArrowRightIcon aria-hidden="true" className="size-4" />
+                      </Link>
+                    )}
+                    <Link
+                      href={project.repo}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`View ${project.name} on GitHub`}
+                      className="focus-ring inline-flex cursor-pointer rounded-full bg-black p-2"
+                    >
+                      <IconBrandGithub aria-hidden="true" className="size-8" />
                     </Link>
                   </div>
                 </div>
-              <div>
-                <Image
-                  src={project.image}
-                  alt={project.name}
-                  className="mt-8 -mb-4 md:-mb-0 lg:mt-0 lg:absolute lg:h-full lg:w-auto lg:max-w-none rounded-t-lg md:rounded-tl-lg"
-                />
-              </div>
+                <div>
+                  <Image
+                    src={project.image}
+                    alt={`${project.name} project preview`}
+                    className="mt-8 -mb-4 rounded-t-lg md:-mb-0 md:rounded-tl-lg lg:absolute lg:mt-0 lg:h-full lg:w-auto lg:max-w-none"
+                  />
+                </div>
               </div>
             </Card>
           ))

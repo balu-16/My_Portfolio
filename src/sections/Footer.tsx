@@ -31,16 +31,17 @@ export const Footer = () => {
             &copy; {new Date().getFullYear()} Balarakesh G. All rights
             reserved.
           </div>
-          <nav className="grid grid-cols-3 md:grid-cols-6 gap-4">
+          <nav aria-label="Footer navigation" className="grid grid-cols-3 gap-4 md:grid-cols-6">
             {footerLinks.map((link) => (
               <Link
                 target="_blank"
+                rel="noreferrer"
                 href={link.href}
                 key={link.title}
-                className="inline-flex items-center gap-1.5 cursor-pointer hover:underline hover:text-white/80 transition-all"
+                className="focus-ring inline-flex items-center gap-1.5 cursor-pointer transition-all hover:text-white/80 hover:underline"
               >
                 <span className="font-semibold">{link.title}</span>
-                <ArrowUpRightIcon className="size-4" />
+                <ArrowUpRightIcon aria-hidden="true" className="size-4" />
               </Link>
             ))}
           </nav>

@@ -1,3 +1,6 @@
 {
-  "cSpell.words": ["aboutme", "calistoga", "memoji", "rockpaperscissor"]
+  "cSpell.words": ["aboutme", "calistoga", "memoji", "rockpaperscissor"],
+  "css.lint.unknownAtRules": "ignore",
+  "less.lint.unknownAtRules": "ignore",
+  "scss.lint.unknownAtRules": "ignore"
 }

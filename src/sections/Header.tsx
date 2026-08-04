@@ -2,8 +2,11 @@ import Link from "next/link";
 
 export const Header = () => {
   return (
-    <div className="flex justify-center items-center fixed top-3 w-full z-10">
-      <nav className="flex gap-1 p-0.5 border border-white/15 rounded-full backdrop-blur-md bg-white/10">
+    <header className="fixed top-3 z-10 flex w-full items-center justify-center px-1 sm:px-2">
+      <nav
+        aria-label="Primary navigation"
+        className="flex w-fit min-w-0 max-w-full flex-nowrap justify-start gap-0.5 overflow-x-auto rounded-full border border-white/15 bg-white/10 p-0.5 backdrop-blur-md no-visible-scrollbar"
+      >
         <Link href="#home" className="nav-items">
           Home
         </Link>
@@ -18,11 +21,11 @@ export const Header = () => {
         </Link>
         <Link
           href="#contact"
-          className="nav-items text-gray-100 hover:bg-white-70"
+          className="nav-items text-gray-100"
         >
           Contact
         </Link>
       </nav>
-    </div>
+    </header>
   );
 };

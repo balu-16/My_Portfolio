@@ -1,6 +1,13 @@
 "use client";
-import React, { useRef } from "react";
-import { useScroll, useTransform, motion, MotionValue } from "framer-motion";
+
+import React, { useEffect, useRef, useState } from "react";
+import {
+  MotionValue,
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 
 export const ContainerScroll = ({
   titleComponent,
@@ -9,44 +16,49 @@ export const ContainerScroll = ({
   titleComponent: string | React.ReactNode;
   children: React.ReactNode;
 }) => {
-  const containerRef = useRef<any>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-  });
-  const [isMobile, setIsMobile] = React.useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: containerRef });
+  const [isMobile, setIsMobile] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
-  React.useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+
     checkMobile();
     window.addEventListener("resize", checkMobile);
-    return () => {
-      window.removeEventListener("resize", checkMobile);
-    };
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  const scaleDimensions = () => {
-    return isMobile ? [0.7, 0.9] : [1.05, 1];
-  };
+  const scaleDimensions = prefersReducedMotion
+    ? [1, 1]
+    : isMobile
+      ? [0.82, 0.96]
+      : [1.03, 1];
+  const translateRange = prefersReducedMotion
+    ? [0, 0]
+    : isMobile
+      ? [0, -48]
+      : [0, -80];
 
-  const rotate = useTransform(scrollYProgress, [0, 1], [20, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], scaleDimensions());
-  const translate = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const rotate = useTransform(
+    scrollYProgress,
+    [0, 1],
+    prefersReducedMotion ? [0, 0] : [16, 0]
+  );
+  const scale = useTransform(scrollYProgress, [0, 1], scaleDimensions);
+  const translate = useTransform(scrollYProgress, [0, 1], translateRange);
 
   return (
     <div
-      className="h-[60rem] md:h-[80rem] flex items-center justify-center relative p-2 md:p-20"
       ref={containerRef}
+      className="relative flex h-auto min-h-[42rem] items-center justify-center p-3 sm:min-h-[48rem] sm:p-6 md:min-h-[62rem] md:p-16 lg:min-h-[72rem] lg:p-20"
     >
       <div
-        className="py-10 md:py-40 w-full relative"
-        style={{
-          perspective: "1000px",
-        }}
+        className="relative w-full py-6 sm:py-8 md:py-32 lg:py-40"
+        style={{ perspective: "1000px" }}
       >
         <Header translate={translate} titleComponent={titleComponent} />
-        <Card rotate={rotate} translate={translate} scale={scale}>
+        <Card rotate={rotate} scale={scale}>
           {children}
         </Card>
       </div>
@@ -54,27 +66,30 @@ export const ContainerScroll = ({
   );
 };
 
-export const Header = ({ translate, titleComponent }: any) => {
+const Header = ({
+  translate,
+  titleComponent,
+}: {
+  translate: MotionValue<number>;
+  titleComponent: React.ReactNode;
+}) => {
   return (
     <motion.div
-      style={{
-        translateY: translate,
-      }}
-      className="div max-w-5xl mx-auto text-center"
+      style={{ translateY: translate }}
+      className="mx-auto max-w-5xl text-center"
     >
       {titleComponent}
     </motion.div>
   );
 };
 
-export const Card = ({
+const Card = ({
   rotate,
   scale,
   children,
 }: {
   rotate: MotionValue<number>;
   scale: MotionValue<number>;
-  translate: MotionValue<number>;
   children: React.ReactNode;
 }) => {
   return (
@@ -85,9 +100,9 @@ export const Card = ({
         boxShadow:
           "0 0 #0000004d, 0 9px 20px #0000004a, 0 37px 37px #00000042, 0 84px 50px #00000026, 0 149px 60px #0000000a, 0 233px 65px #00000003",
       }}
-      className="max-w-5xl -mt-12 mx-auto h-[30rem] md:h-[40rem] w-full border-4 border-[#6C6C6C] p-2 md:p-6 bg-[#222222] rounded-[30px] shadow-2xl"
+      className="mx-auto -mt-6 h-[22rem] w-full max-w-5xl rounded-[30px] border-4 border-[#6C6C6C] bg-[#222222] p-2 shadow-2xl sm:h-[26rem] md:-mt-10 md:h-[38rem] md:p-6 lg:h-[40rem]"
     >
-      <div className=" h-full w-full  overflow-hidden rounded-2xl bg-gray-100 dark:bg-zinc-900 md:rounded-2xl md:p-4 ">
+      <div className="h-full w-full overflow-hidden rounded-2xl bg-gray-100 dark:bg-zinc-900 md:p-4">
         {children}
       </div>
     </motion.div>

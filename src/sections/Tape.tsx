@@ -30,7 +30,7 @@ export const TapeSection = () => {
                     <span className="text-gray-900 uppercase font-extrabold text-sm">
                       {word}
                     </span>
-                    <StarIcon className="size-6 text-gray-900 -rotate-12" />
+                    <StarIcon aria-hidden="true" className="size-6 -rotate-12 text-gray-900" />
                   </div>
                 ))}
               </Fragment>

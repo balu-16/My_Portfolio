@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Inter, Calistoga, Dancing_Script, Fredoka } from "next/font/google";
+import { Inter, Calistoga } from "next/font/google";
 import { twMerge } from "tailwind-merge";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -9,33 +9,13 @@ const calistoga = Calistoga({
   weight: ["400"],
   variable: "--font-cursive",
 });
-const dancing_script = Dancing_Script({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-dancing_script",
-});
-const fredoka = Fredoka({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-fredoka",
-});
 
 export const metadata: Metadata = {
-  title: "My Portfolio",
-  description: "",
+  title: "Balarakesh Gundapaneni | Full-Stack Developer",
+  description:
+    "Portfolio of Balarakesh Gundapaneni, a full-stack developer building scalable web applications and AI-powered products.",
   icons: {
-    icon: [
-      {
-        media: "(prefers-color-scheme: light)",
-        url: "/facivon.ico",
-        href: "/facivon.ico",
-      },
-      {
-        media: "(prefers-color-scheme: dark)",
-        url: "/facivon.ico",
-        href: "/facivon.ico",
-      },
-    ],
+    icon: "/favicon.ico",
   },
 };
 
@@ -45,14 +25,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className=" scroll-smooth ">
+    <html lang="en" className="scroll-smooth">
       <body
         className={twMerge(
-          "bg-gray-900 text-white antialiased font-inter",
+          "bg-gray-900 font-inter text-white antialiased",
           inter.variable,
-          calistoga.variable,
-          dancing_script.variable,
-          fredoka.variable
+          calistoga.variable
         )}
       >
         {children}
